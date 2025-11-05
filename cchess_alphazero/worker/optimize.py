@@ -137,7 +137,7 @@ class OptimizeWorker:
         # 使用 tf.keras 而不是独立的 keras
         from tensorflow.keras.optimizers import SGD
         # TensorFlow 2.x uses eager execution by default, no need for graph/session
-        self.opt = SGD(lr=0.02, momentum=self.config.trainer.momentum)
+        self.opt = SGD(learning_rate=0.02, momentum=self.config.trainer.momentum)
         losses = ['categorical_crossentropy', 'mean_squared_error']
         # In TensorFlow 2.x, multi_gpu_model is deprecated
         # Use tf.distribute.MirroredStrategy for multi-GPU training
@@ -158,7 +158,7 @@ class OptimizeWorker:
         lr = self.decide_learning_rate(total_steps)
         if lr:
             # TensorFlow 2.x uses eager execution by default, no need for graph/session
-            K.set_value(self.opt.lr, lr)
+            self.opt.learning_rate.assign(lr)
             logger.debug(f"total step={total_steps}, set learning rate to {lr}")
 
     def fill_queue(self):

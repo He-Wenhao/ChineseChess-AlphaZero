@@ -7,3 +7,5 @@ logs/*
 Icon*
 .vscode
 *.icloud
+**__pycache__/**
+

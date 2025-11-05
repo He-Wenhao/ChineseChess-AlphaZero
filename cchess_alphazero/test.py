@@ -218,7 +218,7 @@ def test_download():
     from cchess_alphazero.config import Config
     c = Config('mini')
     url = 'http://alphazero.52coding.com.cn/model_best_weight.h5'
-    path = '/Users/liuhe/Downloads/model_best_weight.h5'
+    path = '/Users/liuhe/Downloads/model_best.weights.h5'
     res = download_file(url, path)
     print(res)
 

@@ -10,11 +10,9 @@
 pip install -r requirements.txt
 ```
 
-* Python 3.10.11
-* CUDA: 11.8
-* cuDNN: 8.9.0
-
-
+* Python 3.11.7
+* CUDA: 13.0
+* Tensorflow: 2.20.0
 
 ## 1. 与AI对弈
 
@@ -60,6 +58,7 @@ python cchess_alphazero/run.py eval --type normal --gpu 0
 ```
 
 评估结果示例：
+
 ```
 Evaluate over, next generation win 0.5/1 = 50.00%
 红    黑    胜    平    负
@@ -100,6 +99,7 @@ python cchess_alphazero/run.py evolve --type mini --gpu 0
 ```
 
 **evolve命令特点：**
+
 - **🚀 智能混合训练**：self-play用GPU（快速），optimize用CPU（稳定）
 - **🛡️ 避免GPU错误**：训练阶段使用CPU，避免CUBLAS错误
 - 自动循环执行：self-play → optimize → evaluate → self-play → ...
@@ -114,14 +114,15 @@ python cchess_alphazero/run.py evolve --type mini --gpu 0
 ### 配置类型
 
 * `--type mini`: 快速测试配置
+
   - 游戏数量少，模拟次数少
   - 适合功能验证和快速测试
-
 * `--type normal`: 标准配置
+
   - 平衡的性能和速度
   - 推荐用于正式训练
-
 * `--type distribute`: 分布式配置
+
   - 高性能配置，需要强大硬件
   - 适合多机训练环境
 
